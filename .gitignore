@@ -1,5 +1,5 @@
 **/node_modules/
-/backend/dist/
-/backend/.env
-/backend/.DS_Store
-/backend/*.log
+/dist/
+/.env
+/.DS_Store
+/*.log
