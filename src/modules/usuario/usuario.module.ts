@@ -19,7 +19,6 @@ import { Rol } from '../rol/entities/rol.entity';
       provide: getRepositoryToken(Usuario),
       inject: [getDataSourceToken()],
       useFactory(dataSource: DataSource) {
-        // Override default repository for Task with a custom one
         return dataSource
           .getRepository(Usuario)
           .extend(customUsuarioRepository);

@@ -3,7 +3,12 @@ import { IsString, IsEmail, IsNotEmpty, IsInt } from 'class-validator';
 export class CreateUpdateUsuarioDto {
   @IsString()
   @IsNotEmpty()
-  nombre_usuario: string;
+  nombres: string;
+
+  @IsString()
+  @IsNotEmpty()
+  apellidos: string;
+
 
   @IsEmail()
   correo: string;

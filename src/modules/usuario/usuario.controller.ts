@@ -2,9 +2,8 @@ import { Controller, Get, Post, Body, Param, Patch, Delete, ValidationPipe } fro
 import { UsuarioService } from './usuario.service';
 import { CreateUpdateUsuarioDto } from './dtos/create-update.dto';
 import { ResponseUsuarioDto } from './dtos/response.dto';
-import { Usuario } from './entities/usuario.entity';
 
-@Controller('usuarios') // Define el prefijo de ruta para el controlador
+@Controller('usuarios')
 export class UsuarioController {
   constructor(private readonly usuariosService: UsuarioService) {}
 
@@ -17,6 +16,10 @@ export class UsuarioController {
   async findOne(@Param('id') id: number): Promise<ResponseUsuarioDto> {
     const usuario = await this.usuariosService.getbyid(id);
     return usuario;
+  }
+  @Get('/rol/:rolId')
+  async findByRol(@Param('rolId') rolId: number): Promise<ResponseUsuarioDto[]> {
+    return this.usuariosService.findbyrol(rolId);
   }
 
   @Post()
@@ -31,8 +34,6 @@ export class UsuarioController {
   ): Promise<ResponseUsuarioDto> {
     return this.usuariosService.update(id, updateUsuarioDto);
   }
-
-  // Ruta para eliminar un usuario por su ID
   @Delete(':id')
   async remove(@Param('id') id: number): Promise<void> {
     return this.usuariosService.remove(id);

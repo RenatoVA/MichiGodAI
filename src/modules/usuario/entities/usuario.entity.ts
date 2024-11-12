@@ -4,10 +4,13 @@ import { Rol } from 'src/modules/rol/entities/rol.entity';
 @Entity('usuarios')
 export class Usuario {
     @PrimaryGeneratedColumn()
-    id_usuario: number;
+    id: number;
   
     @Column({ length: 100 })
-    nombre_usuario: string;
+    nombres: string;
+
+    @Column({ length: 100 })
+    apellidos: string;
   
     @Column({ length: 100 })
     correo: string;
@@ -19,6 +22,6 @@ export class Usuario {
     fecha_registro: Date;
   
     @ManyToOne(() => Rol, (rol) => rol.id)
-    @JoinColumn({ name: 'rolId' })
+    @JoinColumn({ name: 'rol_id' })
     rol: Rol;
 }

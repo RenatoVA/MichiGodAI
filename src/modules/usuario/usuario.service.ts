@@ -23,7 +23,10 @@ export class UsuarioService {
   }
 
   async getall(): Promise<ResponseUsuarioDto[]> {
-    const usuarios = await this.usuariosRepository.find();
+    const usuarios = await this.usuariosRepository.find(
+      {relations: ['rol'],}
+    );
+    console.log(usuarios);
     return usuarios.map((usuario) => new ResponseUsuarioDto(usuario));
   }
 
